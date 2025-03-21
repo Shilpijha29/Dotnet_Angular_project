@@ -1,0 +1,53 @@
+<h2>Detail View</h2>
+
+<div class="container">
+  <!-- Left Side: Sampling Time List -->
+  <div class="left-panel">
+    <h3>Sampling Time</h3>
+    <ul>
+      <li *ngFor="let d of data?.datas" 
+          [ngClass]="{'selected': selectedSamplingTime === d.samplingTime}" 
+          (click)="selectSamplingTime(d.samplingTime)">
+        {{ d.samplingTime }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Side: Dynamic Form -->
+  <div class="right-panel" *ngIf="selectedData">
+    <h3>Details for {{ selectedData.samplingTime }}</h3>
+    
+    <div *ngFor="let p of selectedData.properties">
+      <label><strong>{{ p.label }}</strong></label>
+
+      <!-- Textbox for "Project Name" -->
+      <input *ngIf="p.label === 'Project Name'" type="text" [(ngModel)]="p.value">
+
+      <!-- Number Stepper for "Construction Count" -->
+      <div *ngIf="p.label === 'Construction Count'" class="stepper">
+        <button (click)="updateProperty(p.label, p.value - 1)">⬇</button>
+        <span>{{ p.value }}</span>
+        <button (click)="updateProperty(p.label, p.value + 1)">⬆</button>
+      </div>
+
+      <!-- Radio Buttons for "Is Construction Completed" -->
+      <div *ngIf="p.label === 'Is Construction Completed'">
+        <label>
+          <input type="radio" [value]="true" [(ngModel)]="p.value"> Yes
+        </label>
+        <label>
+          <input type="radio" [value]="false" [(ngModel)]="p.value"> No
+        </label>
+      </div>
+
+      <!-- Number Stepper for "Length of the road" -->
+      <div *ngIf="p.label === 'Length of the road'" class="stepper">
+        <button (click)="updateProperty(p.label, p.value - 0.1)">⬇</button>
+        <span>{{ p.value }}</span>
+        <button (click)="updateProperty(p.label, p.value + 0.1)">⬆</button>
+      </div>
+    </div>
+
+    <button (click)="saveData()">Save</button>
+  </div>
+</div>

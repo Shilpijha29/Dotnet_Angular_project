@@ -1,0 +1,25 @@
+<h2>Summary View</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Sampling Time</th>
+      <th>Project Name</th>
+      <th>Construction Count</th>
+      <th>Is Construction Completed</th>
+      <th>Length of the road</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data">
+      <td>{{ d.samplingTime }}</td>
+      <td>{{ d.projectName }}</td>
+      <td>{{ d.constructionCount }}</td>
+      <td>{{ d.isCompleted }}</td>
+      <td>{{ d.roadLength }}</td>
+      <td>
+        <button (click)="viewDetail(d.samplingTime)">View Detail</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

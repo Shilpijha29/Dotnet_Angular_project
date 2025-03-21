@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+}
+
+.left-panel {
+  width: 30%;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+.left-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.left-panel li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.left-panel .selected {
+  background-color: brown;
+  color: white;
+}
+
+.right-panel {
+  width: 70%;
+  padding: 10px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+}
+
+.stepper button {
+  margin: 0 5px;
+  cursor: pointer;
+}
